@@ -1,7 +1,6 @@
 ﻿namespace Chat.Domain.Models;
 
-public record User
+public record User : BaseEntity
 {
-    public Guid Id { get; init; }
     public required string Name { get; init; }
 }

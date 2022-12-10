@@ -4,6 +4,7 @@ using Chat.ConsoleApp.Output;
 using Chat.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Chat.Database;
 
 Host.CreateDefaultBuilder(args)
     .ConfigureServices(AddServices)
@@ -16,6 +17,7 @@ static void AddServices(HostBuilderContext context, IServiceCollection services)
     );
 
     services.AddServices();
+    services.AddDatabase();
     services.AddSingleton<IConsole, DefaultConsole>();
 
     services.AddHostedService<Application>();

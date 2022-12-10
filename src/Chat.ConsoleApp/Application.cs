@@ -25,6 +25,11 @@ public class Application : IHostedService
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
+        console.WriteTable(historyService.Get(new()).Data.Select(x => new
+        {
+            Key = x.Key,
+            Value = string.Join('\n', x.Value)
+        }));
         return Task.CompletedTask;
     }
 
