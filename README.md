@@ -1,14 +1,16 @@
 # ChatChallenge
 
-### How to run application
+### How to run the application
 
 To show default view:
 ```
+cd src/Chat.ConsoleApp 
 dotnet run
 ```
 
 To show aggregation view:
 ```
+cd src/Chat.ConsoleApp 
 dotnet run -- -a *aggregation_name*
 
 e.g.
