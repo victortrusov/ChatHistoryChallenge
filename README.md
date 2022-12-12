@@ -1,8 +1,27 @@
 # ChatChallenge
-take home challenge
+
+### How to run application
+
+To show default view:
+```
+dotnet run
+```
+
+To show aggregation view:
+```
+dotnet run -- -a *aggregation_name*
+
+e.g.
+dotnet run -- -a hourly
+```
+
+--------------------------
 
 
-The Challenge: You are implementing a chat room interface in which the user can view chat history at varying levels of time-based aggregation. For example, they can choose to see every chat event as it occurred, or stats about chat events for a given day.
+### The Challenge
+
+
+You are implementing a chat room interface in which the user can view chat history at varying levels of time-based aggregation. For example, they can choose to see every chat event as it occurred, or stats about chat events for a given day.
 
 
 

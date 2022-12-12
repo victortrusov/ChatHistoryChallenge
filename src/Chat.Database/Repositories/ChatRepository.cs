@@ -22,5 +22,5 @@ public class ChatRepository : IChatRepository
     public IEnumerable<ChatEvent> Get(ChatEventFilter filter) => chatEvents.Where(x =>
         (filter.DateTimeMin is null || x.DateTime >= filter.DateTimeMin) &&
         (filter.DateTimeMax is null || x.DateTime < filter.DateTimeMax)
-    );
+    ).OrderBy(x => x.DateTime);
 }

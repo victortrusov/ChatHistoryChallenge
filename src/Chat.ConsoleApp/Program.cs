@@ -5,16 +5,24 @@ using Chat.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Chat.Database;
+using CommandLine;
+using Microsoft.Extensions.Options;
 
-Host.CreateDefaultBuilder(args)
-    .ConfigureServices(AddServices)
-    .RunConsoleAsync();
+Parser.Default.ParseArguments<ArgumentOptions>(args)
+    .WithParsed<ArgumentOptions>(argOptions =>
+    {
+        Host.CreateDefaultBuilder(args)
+            .ConfigureServices((context, services) => AddServices(context, services, argOptions))
+            .RunConsoleAsync();
+    });
 
-static void AddServices(HostBuilderContext context, IServiceCollection services)
+static void AddServices(HostBuilderContext context, IServiceCollection services, ArgumentOptions argOptions)
 {
     services.Configure<AppConfiguration>(
         context.Configuration.GetSection(AppConfiguration.SectionName)
     );
+
+    services.AddSingleton<IOptions<ArgumentOptions>>(_ => Options.Create(argOptions));
 
     services.AddServices();
     services.AddDatabase();
